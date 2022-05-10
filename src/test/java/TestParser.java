@@ -9,12 +9,12 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestTest extends Main {
+class TestParser extends Main {
 
 
     @Test
     @Order(1)
-    public void listToJson() {
+    public void listToJsonTest() {
         String actual = listToJson(new ArrayList<> ());
         assertInstanceOf(String.class, actual);
         assertNotNull(actual);
@@ -24,7 +24,7 @@ class TestTest extends Main {
     @Test
     @Order(2)
     @Timeout(value = 160, unit = TimeUnit.MILLISECONDS)
-    void writeString() throws ParserConfigurationException, IOException, SAXException {
+    void writeStringTest() throws ParserConfigurationException, IOException, SAXException {
 
         String expected = listToJson(parseXML("data.xml"));
         String actual = "[{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Smith\",\"country\":\"USA\",\"age\":25}," +
@@ -43,7 +43,7 @@ class TestTest extends Main {
 
     @Test
     @Order(3)
-    void parseXML() throws ParserConfigurationException, IOException, SAXException {
+    void parseXMLTest() throws ParserConfigurationException, IOException, SAXException {
 
         Employee emp1 = new Employee(1, "John", "Smith", "USA", 25);
         Employee emp2 = new Employee(2, "Ivan", "Petrov", "RU", 23);
