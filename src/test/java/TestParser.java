@@ -8,24 +8,24 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
-class TestParser extends Main {
+class TestParser  {
 
 
     @Test
-    @Order(1)
+
     public void listToJsonTest() {
-        String actual = listToJson(new ArrayList<> ());
+        String actual = Main.listToJson(new ArrayList<> ());
         assertInstanceOf(String.class, actual);
         assertNotNull(actual);
         System.out.println("Test # 1 listToJson() passed");
     }
 
     @Test
-    @Order(2)
+
     @Timeout(value = 160, unit = TimeUnit.MILLISECONDS)
     void writeString() throws ParserConfigurationException, IOException, SAXException {
 
-        String expected = listToJson(parseXML("data.xml"));
+        String expected = Main.listToJson(Main.parseXML("data.xml"));
         String actual = "[{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Smith\",\"country\":\"USA\",\"age\":25}," +
                 "{\"id\":2,\"firstName\":\"Ivan\",\"lastName\":\"Petrov\",\"country\":\"RU\",\"age\":23}]";
 
@@ -41,7 +41,7 @@ class TestParser extends Main {
     }
 
     @Test
-    @Order(3)
+
     void parseXMLTest() throws ParserConfigurationException, IOException, SAXException {
 
         Employee emp1 = new Employee(1, "John", "Smith", "USA", 25);
@@ -49,7 +49,7 @@ class TestParser extends Main {
         List<Employee> expected = new ArrayList<>();
         expected.add(emp1);
         expected.add(emp2);
-        List<Employee> actual = parseXML ("data.xml");
+        List<Employee> actual = Main.parseXML ("data.xml");
 //        ("data.xml");
 
         for (int i = 0; i < expected.size(); i++) {
